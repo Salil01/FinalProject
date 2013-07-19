@@ -1,0 +1,615 @@
+body{
+    /*background: url("bg.jpg") repeat left center;
+    background-attachment: fixed; 
+    padding-top: 10px;V1 */
+    margin: 0px;
+    margin-bottom: 20px;
+    padding: 0px;
+}
+
+#container{
+    margin:0 auto;
+    width: 940px;
+    background: #fff;
+    /*border:10px solid #460104; V1 */
+    padding-right: 0px;
+    box-shadow: 0px 5px 5px black;
+}
+
+#header{
+    background: url("../img/bg-menu.png"); 
+    /*masih gagal*/
+}
+
+#header #menu{
+    padding: 9px 3px;
+    margin-bottom: 20px;
+}
+
+#header #menu ul{
+    margin: 0px;
+    padding: 0px;
+    padding: 5px 0;
+}
+
+#header #menu ul li{
+    list-style-type: none;
+    float: left;
+    border-right: 1px solid #3d3d3b;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+#header #menu ul li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+
+#header #banner{
+    clear: left;
+    background: #353535;
+    /*height: 220px;*/
+    margin-bottom: 20px;
+    box-shadow: 0 12px 10px -10px black;
+    padding: 10px;
+    overflow: auto; /* biar login dan search form bisa float left */
+}
+
+#header #banner #login{
+    background: #f5f5f5;
+    width: 230px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 60px;
+    margin-bottom: 0px;
+}
+
+#header #banner #login a{
+    text-decoration: none;
+    color:#fa9600;
+}
+
+#header #banner #login input[type=text]{
+    border-radius: 5px;
+    border:1px solid #cfcfcf;
+    width:120px;
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+#header #banner #login input[type=submit]{
+    background: #fa9600;
+    border: 1px solid #cfcfcf;
+    padding: 3px;
+    border-radius: 360px;
+    color: white;
+    box-shadow: 3px 3px 7px black;
+    cursor: pointer;
+}
+
+#header #banner #search, #header #banner #login{
+    float: left;
+}
+
+#header #banner #search{
+    vertical-align: middle;
+    line-height: 70px;
+    margin-right: 55px;
+}
+
+#header #banner #search input{
+    height: 30px;
+}
+
+#header #banner #search input[type=text]{
+    margin-right: 0px;
+    border: 1px solid white;
+    background:white url("../img/find.png") no-repeat 5px 7px;
+    /*masih gagal*/
+    padding-left: 32px;
+    padding-right: 10px;
+    border: 1px solid #fa9600;
+}
+
+#header #banner #search input[type=submit]{
+    background: #fa9600;
+    border: 1px solid #fa9600;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: 0px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#content{
+    clear: left;
+}
+
+#content #sidebar{
+    float:left;
+    width:200px;
+    padding:0 13px;
+}
+
+#content #sidebar .box{
+    margin-bottom: 15px;
+}
+
+#content #sidebar .box .judul{
+    background: #353535;
+    color: #fa9600;
+    padding: 5px;
+    font-family: cursive;
+}
+
+#content #sidebar .box .isi{
+    border: 1px solid #d7d7d7;
+    border-top: none;
+    padding: 7px;
+    padding-top: 5px;
+    background: #f5f5f5;
+    overflow: auto;
+}
+
+#content #sidebar .box .isi ul{
+    margin:0px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#content #sidebar .box .isi ul li a{
+    text-decoration: none;
+    color:#7a1f1a;
+}
+
+#content #sidebar .box .isi img.iklan{
+    margin: 7px auto;
+    display: block;
+    /*margin-top: 7px;*/
+}
+
+/*book random*/
+#content #sidebar .box .isi .random{
+    margin-top: 10px;
+    margin-left: 10px;
+    clear: both;
+}
+
+#content #sidebar .box .isi .random .title{
+    width: 120px;
+    margin: 0px;
+    margin-left: 5px;
+}
+
+#content #sidebar .box .isi .random .title, #content #sidebar .box .isi .random .image{
+    float: left;
+    margin-bottom: 20px;
+}
+
+#content #sidebar .box .isi .random .title p{
+    margin: 0px;
+    font-family: sans-serif;
+}
+/*book random*/
+
+#content #sidebar .box .isi input[type="text"]{
+    border-radius: 5px;
+    border: 1px solid #d7d7d7;
+    padding:2px 7px;
+    float: left;
+    width: 140px; /* biar cukup */
+}
+
+#content #sidebar .box .isi input[type="submit"]{
+    /*float:left;*/
+    margin-left: 0px;
+    background: url("button_bg.jpg");
+    border:1px solid #d7d7d7;
+    color: #fff;
+    padding: 3px 9px;
+    font-family: cursive;
+    vertical-align: middle;
+    display: block;
+    border-radius: 3px;
+}
+
+#content #sidebar .box .isi a{
+    color: #fa9600;
+    text-decoration: none;
+}
+
+#content #sidebar .box p{
+    font-family: tahoma;
+    font-size: 11px;
+}
+
+#content #main{
+    float:left;
+    width:700px;
+}
+
+#content #main h2, #content #mainno h2{
+    margin: 0px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed #cfcfcf;
+    font-family: monospace;
+    color: #726b6b;
+}
+
+#content #main .bookBox, #content #mainno .bookBox{
+    width:140px;
+    padding: 5px;
+    border: 1px solid #cfcfcf;
+    float: left;
+    margin-right: 18px;
+    margin-bottom: 10px;
+}
+
+#content #main .bookBox a, #content #mainno .bookBox a{
+    text-decoration: none;
+    color: #830b14;
+}
+
+#content #main .bookBox img, #content #mainno .bookBox img{
+    display: block;
+    margin: 10px auto;
+}
+
+#content #main .bookBox img.thumbnail, #content #mainno .bookBox img.thumbnail{
+    height: 172px;
+    box-shadow: 5px 5px 20px black;
+}
+
+#content #main .bookBox p, #content #mainno .bookBox p{
+    margin: 0px;
+    text-align: center;
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#content #main .bookBox p.title, #content #mainno .bookBox p.title{
+    color: #830b14;
+}
+
+#content #main .bookBox p.price, #content #mainno .bookBox p.price{
+    color: #726b6b;
+}
+
+#footer{
+    clear: both;
+    color: white;
+    text-align: center;
+    padding: 25px 0px;
+    background: #f69e19;
+    font-family: arial;
+    font-size: 13px;
+}
+
+/* main buku detail */
+#content #main img.gede{
+    float: left;
+    width: 205px;
+    box-shadow: 0px 10px 10px black;
+}
+
+#content #main #title-desc{
+    float: left;
+    width: 470px;
+    margin-left: 20px;
+}
+
+#content #main #title{
+    background: #353535;
+    color: #fa9600;
+    font-family: cursive;
+    padding: 5px;
+}
+
+#content #main #title p.title{
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+#content #main #title p.author{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-style: italic;
+}
+
+#content #main #desc{
+}
+
+#content #main #desc p{
+    margin-top: 3px;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #150004;
+    line-height: 18px;
+}
+
+#content #main #buy{
+    background: url("../img/grey-gradation.jpg") repeat-x;
+    /*masih gagal*/
+    padding: 10px;
+    overflow: auto;
+}
+
+#content #main #buy p.price{
+    margin-top: 0px;
+    font-weight: bold;
+    float: left;
+    margin-right: 20px;
+    margin-top: 6px;
+}
+
+#content #main #buy input{
+    float: left;
+    background: #fa9600;
+    border: 1px solid #fa9600;
+    padding:5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+/* main buku detail */
+
+/* CART */
+#cart{
+    border-collapse: collapse;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+#cart tbody tr{
+    background:#c3d9eb;
+}
+
+#cart tbody td{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#cart thead{
+    border:1px solid #898989;
+}
+
+#cart tbody td input.quantity{
+    width:25%;
+    text-align: center;
+}
+
+#cart th{
+    border-bottom:1px solid #898989;
+    padding: 5px;
+}
+
+#total{
+    background: #f2f2f2;
+    border: 1px solid #898989;
+    padding: 5px;
+    padding-right: 16px;
+    text-align: right;
+    font-family: sans-serif;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+#button-button a{
+    text-decoration: none;
+    color: #fa9600;
+    background: #353535;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border:1px solid black;
+}
+/* CART */
+
+/* MAINNO */
+
+#content #mainno{
+    padding: 10px;
+}
+
+/* MAINNO */
+
+/* REGISTRATION */
+#registration #header-reg{
+    background: #353535;
+    color:#fa9600;
+    padding: 7px;
+    font-family: sans-serif;
+    font-weight: bold;
+    border:1px solid #898989;
+    border-bottom: none;
+}
+
+#registration #content-reg{
+    padding:20px 100px;
+    border:1px solid #898989;
+    border-top: none;
+}
+
+#registration #content-reg hr{
+    margin-bottom: 20px;
+}
+
+#registration #content-reg #form{
+    border:1px solid #353535;
+    padding: 20px 0px 5px;
+}
+
+#registration #content-reg #form input[type="text"],#registration #content-reg #form input[type="password"]{
+    border:1px solid #898989;
+    border-radius: 5px;
+    width: 300px;
+}
+
+#registration #content-reg #form input[type="submit"]{
+    padding: 3px 7px;
+    border:1px solid #898989;
+    border-radius: 5px;
+}
+
+#registration #content-reg #form table{
+    margin:0px auto;
+    font-family: sans-serif;
+}
+
+#registration #content-reg #form table td{
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+/* REGISTRATION */
+
+/* ERROR */
+body .error{
+    color:#230000;
+}
+
+body #errors{
+    border:1px solid red;
+    width:650px;
+    margin:0 auto;
+    padding:5px 20px;
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    background: #fbe3e3;
+}
+
+body #errors p{
+    margin:0px;
+    margin-bottom: 5px;
+}
+/* ERROR */
+
+/* SUCCESS */
+body #success{
+    border: 3px solid #78cf70;
+    padding: 5px 20px;
+    width:650px;
+    margin:0 auto;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+    background: #9adb94;
+}
+/* SUCCESS */
+
+/* CHECKOUT */
+
+#checkout #header-check{
+    background: #353535;
+    color:#fa9600;
+    padding: 7px;
+    font-family: sans-serif;
+    font-weight: bold;
+    border:1px solid #898989;
+    border-bottom: none;
+}
+
+#checkout #content-check{
+    padding:20px 100px;
+    border:1px solid #898989;
+    border-top: none;
+}
+
+#checkout #content-check hr{
+    margin-bottom: 20px;
+}
+
+#checkout #content-check input[type="submit"]{
+    padding: 3px 7px;
+    border:1px solid #898989;
+    border-radius: 5px;
+}
+
+#billing-address,#shipping-address{
+    font-family: verdana;
+    margin-bottom: 30px;
+}
+
+#billing-address h3,#shipping-address h3{
+    margin-bottom:3px;
+}
+
+#billing-address p,#shipping-address td{
+    margin: 0px;
+    font-size: 14px;
+}
+
+#shipping-address td{
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+#shipping-address td#alamat{
+    vertical-align: top;
+}
+
+#shipping-address form input[type="text"]{
+    border:1px solid #898989;
+    width: 300px;
+}
+
+#shipping-address form textarea{
+    width: 300px;
+    height: 100px;
+}
+
+/* CHECKOUT */
+
+/* FINAL ORDER */
+
+#content-check #kiri,#content-check #kanan{
+    font-size: 14px;
+    font-family: verdana;
+}
+
+#content-check #kiri{
+    float: left;
+}
+
+#content-check #kanan{
+    float: right;
+    margin-bottom: 20px;
+}
+
+#content-check{
+    clear: both;
+}
+
+#content-check #kiri p,#content-check #kanan p{
+    margin:0px;
+}
+
+#content-check #kiri h3,#content-check #kanan h3{
+    margin-bottom:3px;
+}
+
+#content-check #show-cart{
+    clear: both;
+    margin-bottom: 20px;
+}
+
+#content-check #finalize-order{
+    width: 130px;
+    margin: 0 auto;
+}
+
+#finalize-order a{
+    text-decoration: none;
+    font-family: verdana;
+    padding: 3px 7px;
+    border:1px solid #898989;
+    border-radius: 5px;
+}
+/* FINAL ORDER */

@@ -1,0 +1,29 @@
+<dataset>
+        <t_category id="1" name="Java" description="Java Book Category" />
+        
+        <t_category id="2" name=".NET" description=".NET Book Category" />
+        
+	<t_book id="1" title="Java Super" author="Agung Setiawan" description="Good Java Book" 
+              price="30" image="image-java.jpg" id_category="1" />
+        
+        <t_book id="2" title="Spring MVC" author="Setiawan" description="Good Java Book" 
+              price="35" image="image-spring.jpg" id_category="1" />
+        
+        <t_book id="3" title="ASP.NET MVC" author="Dimas Jay" description="Good .NET Book" 
+              price="33" image="image-aspnet.jpg" id_category="2" />
+        
+        <t_customer id="1" username="agung" password="greatengineer" full_name="Agung Setiawan" 
+                    email="blinkawan@gmail.com" address="Semarang" phone="089667754239" />
+        
+        <t_customer id="2" username="hauril" password="greatengineer" full_name="Hauril Maulida Nisfari" 
+                    email="aurielhaurilnisfari@yahoo.com" address="Semarang" phone="089668237854" />
+        
+        <t_order id="1" total="130" status="new" date="2013-07-06" username_customer="1" />
+        
+        <t_order id="2" total="150" status="finish" date="2013-09-10" username_customer="1" />
+        
+        <t_order_detail id="1" amount="2" sub_total="60" id_book="1" id_order="1" />
+        
+        <t_order_detail id="2" amount="2" sub_total="70" id_book="2" id_order="1" />
+        
+</dataset>
