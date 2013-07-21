@@ -113,7 +113,7 @@ public class OrderDaoHibernateImplIT {
     @DatabaseSetup("classpath:sampleData.xml")
     public void findByCustomerTest(){
         Customer customer=customerDao.findOne(1L);
-        List<Order> order=orderDao.findByCustomer(customer);
+        List<Order> order=orderDao.findByCustomer(customer.getUsername());
         
         assertNotNull(order);
         assertEquals(2, order.size());

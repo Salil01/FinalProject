@@ -24,6 +24,8 @@ public class OrderDetail {
     @Column(name = "sub_total")
     private BigDecimal subTotal;
     
+    private BigDecimal price;
+    
     @OneToOne
     @JoinColumn(name="id_book")
     private Book book;
@@ -71,6 +73,13 @@ public class OrderDetail {
     public void setSubTotal(BigDecimal subTotal) {
         this.subTotal = subTotal;
     }
-    
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
     
 }

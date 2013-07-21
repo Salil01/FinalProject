@@ -20,10 +20,11 @@
     </http>
  
     <authentication-manager>
-      <authentication-provider>
-        <user-service>
+      <authentication-provider user-service-ref="customUserDetailsService">
+<!--        <user-service>
         <user name="agung" password="123456" authorities="ROLE_USER" />
-        </user-service>
+        </user-service>-->
+        <password-encoder hash="md5" />
       </authentication-provider>
     </authentication-manager>
 

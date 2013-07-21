@@ -8,7 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -46,6 +49,10 @@ public class Customer implements Serializable{
     
     @OneToMany(mappedBy = "customer")
     List<Order> listOrder=new ArrayList<Order>();
+    
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
     
     public Customer(){}
     
@@ -120,6 +127,14 @@ public class Customer implements Serializable{
 
     public void setListOrder(List<Order> listOrder) {
         this.listOrder = listOrder;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
     
     

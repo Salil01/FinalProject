@@ -1,7 +1,9 @@
 package com.agungsetiawan.finalproject.controller;
 
 import com.agungsetiawan.finalproject.domain.Customer;
+import com.agungsetiawan.finalproject.domain.Role;
 import com.agungsetiawan.finalproject.service.CustomerService;
+import com.agungsetiawan.finalproject.service.RoleService;
 import javax.validation.Valid;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class RegistrationController {
     @Autowired
     private CustomerService customerService;
     
+    @Autowired
+    private RoleService roleService;
+    
     @RequestMapping(value = "public/registration",method = RequestMethod.GET)
     public String registration(Model model,@RequestParam(value = "message",required = false) String message){
         model.addAttribute("page", "registration.jsp");
@@ -39,6 +44,7 @@ public class RegistrationController {
             return "templateno";
         }else{
             customer.setPassword(DigestUtils.md5Hex(customer.getPassword()));
+            customer.setRole(roleService.findOne(2L));
             customerService.save(customer);
             return "redirect:/public/registration?message=1";
         }

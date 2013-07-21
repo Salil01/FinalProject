@@ -15,8 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class BookServiceImpl implements BookService{
     
-    @Autowired
     private BookDao bookDao;
+    
+    @Autowired
+    public BookServiceImpl(BookDao bookDao){
+        this.bookDao=bookDao;
+    }
     
     public void setBookDao(BookDao bookDao){
         this.bookDao=bookDao;

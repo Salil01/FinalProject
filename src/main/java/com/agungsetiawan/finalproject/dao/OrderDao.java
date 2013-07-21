@@ -11,6 +11,6 @@ import java.util.List;
 public interface OrderDao {
     public Order save(Order order);    
     public Order findOne(Long id);
-    public List<Order> findByCustomer(Customer customer);
+    public List<Order> findByCustomer(String username);
     public List<Order> findAll();
 }

@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -37,6 +38,7 @@ public class CheckoutController {
     
     @RequestMapping(value = "secured/checkout/1",method = RequestMethod.GET)
     public String checkout1(Model model){
+        model.addAttribute("customer", customerService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
         model.addAttribute("order", new Order());
         model.addAttribute("page", "checkout1.jsp");
         return "templateno";
@@ -49,6 +51,7 @@ public class CheckoutController {
             model.addAttribute("showError", 1);
             return "templateno";
         }
+        model.addAttribute("customer", customerService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
         model.addAttribute("page", "checkout2.jsp");
         model.addAttribute("order", order);
         model.addAttribute("books", cart.findAll().entrySet());
@@ -65,6 +68,7 @@ public class CheckoutController {
             detail.setBook(o.getKey());
             detail.setAmount(o.getValue());
             detail.setSubTotal(o.getKey().getPrice().multiply(new BigDecimal(o.getValue())));
+            detail.setPrice(o.getKey().getPrice());
             detail.setOrder(order);
             order.getOrderDetails().add(detail);
             
@@ -75,9 +79,10 @@ public class CheckoutController {
         order.setTotal(total);
         order.setStatus("baru");
         order.setDate(new Date());
-        order.setCustomer(customerService.findByUsername("blinkawan"));
+        order.setCustomer(customerService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
         
         orderService.save(order);
+        model.addAttribute("name", customerService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getFullName());
         model.addAttribute("page", "checkoutsuccess.jsp");
         return "templateno";
     }

@@ -19,11 +19,10 @@
                 <hr>
                 <div id="billing-address">
                     <h3>Alamat Tagihan</h3>
-                    <p>Agung Setiawan</p>
-                    <p>Bukit Umbul 3E, Sumurboto, Banyumanik</p>
-                    <p>Semarang, Jawa Tengah</p>
-                    <p>089667754239</p>
-                    <p>blinkawan@gmail.com</p>
+                    <p>${customer.fullName}</p>
+                    <p>${customer.address}</p>
+                    <p>${customer.phone}</p>
+                    <p>${customer.email}</p>
                 </div>
         
                 <div id="shipping-address">

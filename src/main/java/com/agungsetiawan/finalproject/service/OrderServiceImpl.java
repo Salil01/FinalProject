@@ -30,8 +30,8 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public List<Order> findByCustomer(Customer customer) {
-        return orderDao.findByCustomer(customer);
+    public List<Order> findByCustomer(String username) {
+        return orderDao.findByCustomer(username);
     }
 
     @Override

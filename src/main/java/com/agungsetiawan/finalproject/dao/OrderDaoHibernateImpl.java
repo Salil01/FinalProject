@@ -38,9 +38,9 @@ public class OrderDaoHibernateImpl implements OrderDao{
     }
 
     @Override
-    public List<Order> findByCustomer(Customer customer) {
+    public List<Order> findByCustomer(String username) {
         return sessionFactory.getCurrentSession().createQuery("select o from Order o where o.customer.username=:customer")
-                .setParameter("customer", customer.getUsername()).list();
+                .setParameter("customer", username).list();
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

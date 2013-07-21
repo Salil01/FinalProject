@@ -31,7 +31,7 @@
                                 </tr>
                                 <tr>
                                     <td><a href="<c:url value="/logout" />">Logout |</a></td>
-                                    <td><a href="">My Account</a></td>
+                                    <td><a href="<c:url value="/secured/my/order" />">My Order</a></td>
                                 </tr>
                             </table>
                         </form>
