@@ -32,6 +32,25 @@ public class Order implements Serializable{
     private Long id;
     private BigDecimal total;
     private String status;
+
+    public Order() {
+    }
+
+    public Order(Long id, BigDecimal total, String status, String shippingAddress, String receiver, String city, String province, String receiverEmail, String receiverPhone, Date date, Customer customer) {
+        this.id = id;
+        this.total = total;
+        this.status = status;
+        this.shippingAddress = shippingAddress;
+        this.receiver = receiver;
+        this.city = city;
+        this.province = province;
+        this.receiverEmail = receiverEmail;
+        this.receiverPhone = receiverPhone;
+        this.date = date;
+        this.customer = customer;
+    }
+    
+    
     
     @NotEmpty(message="Alamat Pengiriman Harus diisi")
     @Column(name = "shipping_address")

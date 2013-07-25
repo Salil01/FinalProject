@@ -14,8 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CustomerServiceImpl implements CustomerService{
     
-    @Autowired
     private CustomerDao customerDao;
+
+    @Autowired
+    public CustomerServiceImpl(CustomerDao customerDao) {
+        this.customerDao=customerDao;
+    }
 
     @Override
     public Customer save(Customer customer) {

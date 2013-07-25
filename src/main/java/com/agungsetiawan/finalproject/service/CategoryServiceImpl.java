@@ -14,10 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class CategoryServiceImpl implements CategoryService{
+
+    private CategoryDao categoryDao;
     
     @Autowired
-    private CategoryDao categoryDao;
-
+    public CategoryServiceImpl(CategoryDao categoryDao) {
+        this.categoryDao=categoryDao;
+    }
+    
     @Override
     public Category save(Category category) {
         return categoryDao.save(category);

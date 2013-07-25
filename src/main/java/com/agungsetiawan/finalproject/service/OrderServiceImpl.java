@@ -16,8 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class OrderServiceImpl implements OrderService{
 
-    @Autowired
     private OrderDao orderDao;
+
+    @Autowired
+    public OrderServiceImpl(OrderDao orderDao) {
+        this.orderDao=orderDao;
+    }
     
     @Override
     public Order save(Order order) {

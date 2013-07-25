@@ -34,6 +34,20 @@ public class OrderDetail {
     @JoinColumn(name = "id_order")
     private Order order;
 
+    public OrderDetail() {
+    }
+
+    public OrderDetail(Long id, Integer amount, BigDecimal subTotal, BigDecimal price, Book book, Order order) {
+        this.id = id;
+        this.amount = amount;
+        this.subTotal = subTotal;
+        this.price = price;
+        this.book = book;
+        this.order = order;
+    }
+    
+    
+
     public Long getId() {
         return id;
     }

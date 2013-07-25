@@ -4,6 +4,7 @@ import com.agungsetiawan.finalproject.domain.Book;
 import com.agungsetiawan.finalproject.domain.Category;
 import com.agungsetiawan.finalproject.service.BookService;
 import com.agungsetiawan.finalproject.service.CartService;
+import com.agungsetiawan.finalproject.service.CartServiceInterface;
 import com.agungsetiawan.finalproject.service.CategoryService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class CategoryController {
     @Autowired
-    private CartService cart;
+    private CartServiceInterface cart;
     
     @Autowired
     private CategoryService categoryService;
     
     @Autowired
     private BookService bookService;
+    
+    public CategoryController(){
+        
+    }
+    
+    public CategoryController(CartServiceInterface cart,CategoryService categoryService,BookService bookService){
+        this.cart=cart;
+        this.categoryService=categoryService;
+        this.bookService=bookService;
+    }
     
     @ModelAttribute(value = "listCategory")
     public List<Category> listCategory(){
@@ -38,7 +49,7 @@ public class CategoryController {
     
     @ModelAttribute(value = "randomBooks")
     public List<Book> listBook(){
-        return bookService.findAll();
+        return bookService.findRandom();
     }
     
     @ModelAttribute(value = "cartSize")

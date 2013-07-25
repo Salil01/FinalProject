@@ -4,6 +4,7 @@ import com.agungsetiawan.finalproject.domain.Book;
 import com.agungsetiawan.finalproject.domain.Category;
 import com.agungsetiawan.finalproject.service.BookService;
 import com.agungsetiawan.finalproject.service.CartService;
+import com.agungsetiawan.finalproject.service.CartServiceInterface;
 import com.agungsetiawan.finalproject.service.CategoryService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class CartController {
     @Autowired
-    private CartService cart;
+    private CartServiceInterface cart;
     
     @Autowired
     private BookService bookService;
     
     @Autowired
     private CategoryService categoryService;
+    
+    public CartController(CartServiceInterface cart,BookService bookService,CategoryService categoryService){
+        this.cart=cart;
+        this.bookService=bookService;
+        this.categoryService=categoryService;
+    }
+    
+    public CartController(){
+        
+    }
     
     @ModelAttribute(value = "listCategory")
     public List<Category> listCategory(){
@@ -37,7 +48,7 @@ public class CartController {
     
     @ModelAttribute(value = "randomBooks")
     public List<Book> listBook(){
-        return bookService.findAll();
+        return bookService.findRandom();
     }
     
     @ModelAttribute(value = "cartSize")
@@ -56,21 +67,24 @@ public class CartController {
     @RequestMapping(value = "public/cart/add/{bookId}",method = RequestMethod.POST)
     public String addBook(@PathVariable("bookId") Long bookId, Model model){
         Book book=bookService.findOne(bookId);
-        cart.save(book);
+        Book bookSaved=cart.save(book);
+        model.addAttribute("id", bookSaved.getId());
         return "redirect:/public/cart";
     }
     
     @RequestMapping(value = "public/cart/remove/{bookId}",method = RequestMethod.GET)
     public String removeBook(@PathVariable("bookId") Long bookId ,Model model){
         Book book=bookService.findOne(bookId);
-        cart.delete(book);
+        Book bookDeleted=cart.delete(book);
+        model.addAttribute("id", bookDeleted.getId());
         return "redirect:/public/cart";
     }
     
     @RequestMapping(value = "public/cart/update",method = RequestMethod.POST)
-    public String update(@RequestParam(value = "bookId") Long bookId,@RequestParam(value = "quantity") Integer quantity){
+    public String update(@RequestParam(value = "bookId") Long bookId,@RequestParam(value = "quantity") Integer quantity,Model model){
         Book book=bookService.findOne(bookId);
-        cart.update(book, quantity);
+        Book bookUpdated=cart.update(book, quantity);
+        model.addAttribute("id", bookUpdated.getId());
         return "redirect:/public/cart";
     }
     

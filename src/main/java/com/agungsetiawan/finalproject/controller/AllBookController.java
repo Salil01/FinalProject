@@ -19,6 +19,10 @@ public class AllBookController {
     @Autowired
     private BookService bookService;
     
+    public void setBookService(BookService bookService){
+        this.bookService=bookService;
+    }
+    
     @RequestMapping(value = "public/book/all",method = RequestMethod.GET)
     public String allBook(Model model){
         List<Book> books=bookService.findRandom();

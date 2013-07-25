@@ -14,8 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class RoleServiceImpl implements RoleService{
 
-    @Autowired
     private RoleDao roleDao;
+
+    @Autowired
+    public RoleServiceImpl(RoleDao roleDao) {
+        this.roleDao = roleDao;
+    }
+    
     @Override
     public Role findOne(Long id) {
         return roleDao.findOne(id);

@@ -1,5 +1,6 @@
 package com.agungsetiawan.finalproject.config;
 
+import com.agungsetiawan.finalproject.interceptor.CommonDataInterceptor;
 import com.agungsetiawan.finalproject.service.CartService;
 import java.util.Properties;
 import javax.annotation.Resource;
@@ -16,7 +17,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.context.request.WebRequestInterceptor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -94,6 +97,16 @@ public class WebAppConfig extends WebMvcConfigurerAdapter{
         registry.addResourceHandler("/img/**").addResourceLocations("/img/");
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
     }
+    
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry){
+//        registry.addWebRequestInterceptor(commonDataInterceptor());
+//    }
+//    
+//    @Bean
+//    public WebRequestInterceptor commonDataInterceptor(){
+//        return new CommonDataInterceptor();
+//    }
   
     
 //    @Bean
