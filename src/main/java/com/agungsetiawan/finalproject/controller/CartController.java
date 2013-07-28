@@ -1,16 +1,11 @@
 package com.agungsetiawan.finalproject.controller;
 
 import com.agungsetiawan.finalproject.domain.Book;
-import com.agungsetiawan.finalproject.domain.Category;
 import com.agungsetiawan.finalproject.service.BookService;
-import com.agungsetiawan.finalproject.service.CartService;
 import com.agungsetiawan.finalproject.service.CartServiceInterface;
-import com.agungsetiawan.finalproject.service.CategoryService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,32 +23,13 @@ public class CartController {
     @Autowired
     private BookService bookService;
     
-    @Autowired
-    private CategoryService categoryService;
-    
-    public CartController(CartServiceInterface cart,BookService bookService,CategoryService categoryService){
+    public CartController(CartServiceInterface cart,BookService bookService){
         this.cart=cart;
         this.bookService=bookService;
-        this.categoryService=categoryService;
     }
     
     public CartController(){
         
-    }
-    
-    @ModelAttribute(value = "listCategory")
-    public List<Category> listCategory(){
-        return categoryService.findAll();
-    }
-    
-    @ModelAttribute(value = "randomBooks")
-    public List<Book> listBook(){
-        return bookService.findRandom();
-    }
-    
-    @ModelAttribute(value = "cartSize")
-    public Integer cartSize(){
-        return cart.size();
     }
     
     @RequestMapping(value = "public/cart",method = RequestMethod.GET)

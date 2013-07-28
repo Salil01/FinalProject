@@ -23,8 +23,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class CategoryController {
-    @Autowired
-    private CartServiceInterface cart;
     
     @Autowired
     private CategoryService categoryService;
@@ -36,25 +34,9 @@ public class CategoryController {
         
     }
     
-    public CategoryController(CartServiceInterface cart,CategoryService categoryService,BookService bookService){
-        this.cart=cart;
+    public CategoryController(CategoryService categoryService,BookService bookService){
         this.categoryService=categoryService;
         this.bookService=bookService;
-    }
-    
-    @ModelAttribute(value = "listCategory")
-    public List<Category> listCategory(){
-        return categoryService.findAll();
-    }
-    
-    @ModelAttribute(value = "randomBooks")
-    public List<Book> listBook(){
-        return bookService.findRandom();
-    }
-    
-    @ModelAttribute(value = "cartSize")
-    public Integer cartSize(){
-        return cart.size();
     }
     
     @RequestMapping(value = "public/category/{categoryId}",method = RequestMethod.GET)

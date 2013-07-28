@@ -26,7 +26,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 public class CategoryControllerTest {
     
     CategoryController categoryController;
-    CartServiceInterface cartService;
     CategoryService categoryService;
     BookService bookService;
     View view;
@@ -34,10 +33,9 @@ public class CategoryControllerTest {
     
     @Before
     public void setUp() {
-        cartService= EasyMock.createMock(CartServiceInterface.class);
         categoryService=EasyMock.createMock(CategoryService.class);
         bookService=EasyMock.createMock(BookService.class);
-        categoryController =new CategoryController(cartService, categoryService, bookService);
+        categoryController =new CategoryController(categoryService, bookService);
         view=EasyMock.createMock(View.class);
         mockMvc=MockMvcBuilders.standaloneSetup(categoryController).setSingleView(view).build();
        
@@ -51,17 +49,11 @@ public class CategoryControllerTest {
         books.add(book);
         books.add(book2);
         
-        List<Category> categories=new ArrayList<Category>();
         Category category=new Category("category", "description");
-        Category category2=new Category("category2", "description2");
-        categories.add(category);
-        categories.add(category2);
         
         EasyMock.expect(bookService.findByCategory(2L)).andReturn(books);
-        EasyMock.expect(bookService.findRandom()).andReturn(books);
         EasyMock.replay(bookService);
         
-        EasyMock.expect(categoryService.findAll()).andReturn(categories);
         EasyMock.expect(categoryService.findOne(2L)).andReturn(category);
         EasyMock.replay(categoryService);
         

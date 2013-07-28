@@ -98,15 +98,15 @@ public class WebAppConfig extends WebMvcConfigurerAdapter{
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
     }
     
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry){
-//        registry.addWebRequestInterceptor(commonDataInterceptor());
-//    }
-//    
-//    @Bean
-//    public WebRequestInterceptor commonDataInterceptor(){
-//        return new CommonDataInterceptor();
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry){
+        registry.addWebRequestInterceptor(commonDataInterceptor());
+    }
+    
+    @Bean
+    public WebRequestInterceptor commonDataInterceptor(){
+        return new CommonDataInterceptor();
+    }
   
     
 //    @Bean

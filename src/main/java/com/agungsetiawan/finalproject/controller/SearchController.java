@@ -20,28 +20,15 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class SearchController {
-    @Autowired
-    private CartService cart;
-    
-    @Autowired
-    private CategoryService categoryService;
     
     @Autowired
     private BookService bookService;
-    
-    @ModelAttribute(value = "listCategory")
-    public List<Category> listCategory(){
-        return categoryService.findAll();
+
+    public SearchController() {
     }
     
-    @ModelAttribute(value = "randomBooks")
-    public List<Book> listBook(){
-        return bookService.findAll();
-    }
-    
-    @ModelAttribute(value = "cartSize")
-    public Integer cartSize(){
-        return cart.size();
+    public SearchController(BookService bookService) {
+        this.bookService = bookService;
     }
     
     @RequestMapping(value = "public/search",method = RequestMethod.GET)

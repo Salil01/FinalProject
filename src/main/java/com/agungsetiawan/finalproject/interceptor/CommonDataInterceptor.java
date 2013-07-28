@@ -20,6 +20,13 @@ public class CommonDataInterceptor implements WebRequestInterceptor{
     private BookService bookService;
     @Autowired
     private CategoryService categoryService;
+    
+    public CommonDataInterceptor(BookService bookService) {
+        this.bookService = bookService;
+    }
+
+    public CommonDataInterceptor() {
+    }
 
     @Override
     public void preHandle(WebRequest wr) throws Exception {

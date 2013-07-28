@@ -16,6 +16,10 @@ import java.util.Map.Entry;
 public class CartService implements Serializable,CartServiceInterface{
     private Map<Book,Integer> books=new HashMap<Book, Integer>();
     
+    public void setBooks(Map<Book,Integer> books){
+        this.books=books;
+    }
+    
     @Override
     public Map<Book,Integer> findAll(){
         return Collections.unmodifiableMap(this.books);

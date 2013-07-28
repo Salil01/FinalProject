@@ -20,27 +20,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
     
     @Autowired
-    private CategoryService categoryService;
-    
-    @Autowired
     private BookService bookService;
-    
-    @Autowired
-    private CartService cart;
-    
-    @ModelAttribute(value = "listCategory")
-    public List<Category> listCategory(){
-        return categoryService.findAll();
+
+    public HomeController() {
     }
-    
-    @ModelAttribute(value = "randomBooks")
-    public List<Book> listBook(){
-        return bookService.findAll();
-    }
-    
-    @ModelAttribute(value = "cartSize")
-    public Integer cartSize(){
-        return cart.size();
+
+    public HomeController(BookService bookService) {
+        this.bookService = bookService;
     }
     
     @RequestMapping(value = "/",method = RequestMethod.GET)
