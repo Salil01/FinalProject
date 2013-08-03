@@ -3,7 +3,7 @@ package com.agungsetiawan.finalproject.controller;
 import com.agungsetiawan.finalproject.domain.Book;
 import com.agungsetiawan.finalproject.domain.Order;
 import com.agungsetiawan.finalproject.domain.OrderDetail;
-import com.agungsetiawan.finalproject.service.CartService;
+import com.agungsetiawan.finalproject.service.CartServiceInterface;
 import com.agungsetiawan.finalproject.service.CustomerService;
 import com.agungsetiawan.finalproject.service.OrderService;
 import java.math.BigDecimal;
@@ -28,13 +28,22 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class CheckoutController {
     
     @Autowired
-    private CartService cart;
+    private CartServiceInterface cart;
     
     @Autowired
     private OrderService orderService;
     
     @Autowired
     private CustomerService customerService;
+
+    public CheckoutController() {
+    }
+
+    public CheckoutController(CartServiceInterface cart, OrderService orderService, CustomerService customerService) {
+        this.cart = cart;
+        this.orderService = orderService;
+        this.customerService = customerService;
+    }
     
     @RequestMapping(value = "secured/checkout/1",method = RequestMethod.GET)
     public String checkout1(Model model){
@@ -49,6 +58,7 @@ public class CheckoutController {
         if(result.hasErrors()){
             model.addAttribute("page", "checkout1.jsp");
             model.addAttribute("showError", 1);
+            model.addAttribute("customer", customerService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
             return "templateno";
         }
         model.addAttribute("customer", customerService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));

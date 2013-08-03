@@ -45,5 +45,9 @@ public class OrderDetailBuilder {
         orderDetail.setOrder(order);
         return this;
     }
+    
+    public OrderDetail build(){
+        return orderDetail;
+    }
 }
 

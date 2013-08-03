@@ -18,9 +18,13 @@
         <t_customer id="2" username="hauril" password="greatengineer" full_name="Hauril Maulida Nisfari" 
                     email="aurielhaurilnisfari@yahoo.com" address="Semarang" phone="089668237854" />
         
-        <t_order id="1" total="130" status="new" date="2013-07-06" username_customer="1" />
+        <t_order id="1" total="130" status="new" date="2013-07-06" username_customer="1" city="Semarang"
+                  province="Jawa Tengah" receiver="Hauril" receiver_email="aurielhaurilnisfari@yahoo.com"
+                  receiver_phone="08966827854" shipping_address="Boja" />
         
-        <t_order id="2" total="150" status="finish" date="2013-09-10" username_customer="1" />
+        <t_order id="2" total="150" status="finish" date="2013-09-10" username_customer="1" city="Bandung"
+                  province="Jawa Barat" receiver="Agung Setiawan" receiver_email="blinkawan@gmail.com"
+                  receiver_phone="089667754239" shipping_address="Cihampelas"/>
         
         <t_order_detail id="1" amount="2" sub_total="60" id_book="1" id_order="1" />
         

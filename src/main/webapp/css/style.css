@@ -613,3 +613,60 @@ body #success{
     border-radius: 5px;
 }
 /* FINAL ORDER */
+
+
+/* ADMIN BUKU */
+
+a.button{
+    text-decoration: none;
+    background: #f5f5f5;
+    color: #353535;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #d5d5d5;
+}
+
+a.button img{
+    vertical-align: bottom;
+    margin-right: 3px;
+}
+
+#table-wrapper{   
+    margin-top: 20px;
+    padding: 5px;
+    border: 1px solid #d5d5d5;
+    border-radius: 10px;
+}
+
+.admin-table{
+    border-collapse: collapse;
+    width: 100%;
+    font-family: arial;
+    color: #3d3d3b;
+}
+
+.admin-table tr{
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.admin-table td{
+    padding: 5px;
+}
+
+.admin-table tbody tr:nth-child(even){
+    background: #F6F5FA;
+}
+
+.admin-table thead td{
+    font-weight: bold;
+}
+
+.admin-table img{
+    vertical-align: bottom;
+}
+
+.admin-table a{
+    text-decoration: none;
+}
+
+/* ADMIN BUKU */

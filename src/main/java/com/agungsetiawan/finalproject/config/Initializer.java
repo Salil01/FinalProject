@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.agungsetiawan.finalproject.config;
 
 import javax.servlet.ServletContext;
@@ -28,6 +24,7 @@ public class Initializer implements WebApplicationInitializer{
         ServletRegistration.Dynamic servlet=sc.addServlet("dispatcher", new DispatcherServlet(ctx));
         servlet.addMapping("/");
         servlet.setLoadOnStartup(1);
+        
     }
     
 }

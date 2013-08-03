@@ -20,11 +20,13 @@ public class CommonDataInterceptor implements WebRequestInterceptor{
     private BookService bookService;
     @Autowired
     private CategoryService categoryService;
-    
-    public CommonDataInterceptor(BookService bookService) {
-        this.bookService = bookService;
-    }
 
+    public CommonDataInterceptor(CartServiceInterface cartService, BookService bookService, CategoryService categoryService) {
+        this.cartService = cartService;
+        this.bookService = bookService;
+        this.categoryService = categoryService;
+    }
+    
     public CommonDataInterceptor() {
     }
 

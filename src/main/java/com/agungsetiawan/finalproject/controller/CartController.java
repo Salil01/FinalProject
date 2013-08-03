@@ -1,6 +1,7 @@
 package com.agungsetiawan.finalproject.controller;
 
 import com.agungsetiawan.finalproject.domain.Book;
+import com.agungsetiawan.finalproject.exception.NotFoundException;
 import com.agungsetiawan.finalproject.service.BookService;
 import com.agungsetiawan.finalproject.service.CartServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,10 @@ public class CartController {
     @RequestMapping(value = "public/cart/remove/{bookId}",method = RequestMethod.GET)
     public String removeBook(@PathVariable("bookId") Long bookId ,Model model){
         Book book=bookService.findOne(bookId);
+        
+        if(book==null){
+            throw new NotFoundException("Not Found");
+        }
         Book bookDeleted=cart.delete(book);
         model.addAttribute("id", bookDeleted.getId());
         return "redirect:/public/cart";

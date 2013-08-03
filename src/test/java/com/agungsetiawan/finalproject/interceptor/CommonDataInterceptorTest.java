@@ -2,6 +2,8 @@ package com.agungsetiawan.finalproject.interceptor;
 
 import com.agungsetiawan.finalproject.domain.Book;
 import com.agungsetiawan.finalproject.service.BookService;
+import com.agungsetiawan.finalproject.service.CartServiceInterface;
+import com.agungsetiawan.finalproject.service.CategoryService;
 import com.agungsetiawan.finalproject.util.BookBuilder;
 import com.agungsetiawan.finalproject.util.CategoryBuilder;
 import java.math.BigDecimal;
@@ -22,11 +24,15 @@ public class CommonDataInterceptorTest {
     
     private CommonDataInterceptor commonDataInterceptor;
     private BookService bookService;
+    private CategoryService categoryService;
+    private CartServiceInterface cartService;
 
     @Before
     public void setUp() {
         bookService= Mockito.mock(BookService.class);
-        commonDataInterceptor=new CommonDataInterceptor(bookService);
+        categoryService=Mockito.mock(CategoryService.class);
+        cartService=Mockito.mock(CartServiceInterface.class);
+        commonDataInterceptor=new CommonDataInterceptor(cartService, bookService, categoryService);
     }
     
     @Test

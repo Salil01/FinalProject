@@ -70,6 +70,12 @@ public class OrderDaoHibernateImplIT {
         order.getOrderDetails().add(detail);
         order.getOrderDetails().add(detail2);
         order.setTotal(detail.getSubTotal().add(detail2.getSubTotal()));
+        order.setCity("Surabaya");
+        order.setProvince("Jawa Timur");
+        order.setReceiver("Brawijaya");
+        order.setReceiverEmail("brawijaya@gmail.com");
+        order.setReceiverPhone("089808980898");
+        order.setShippingAddress("Jl Kawi 80, Kauman, Surabaya");
         
         Order orderPersisted=orderDao.save(order);
         assertNotNull(orderPersisted);

@@ -18,9 +18,12 @@ public class AllBookController {
     
     @Autowired
     private BookService bookService;
-    
-    public void setBookService(BookService bookService){
-        this.bookService=bookService;
+
+    public AllBookController() {
+    }
+
+    public AllBookController(BookService bookService) {
+        this.bookService = bookService;
     }
     
     @RequestMapping(value = "public/book/all",method = RequestMethod.GET)

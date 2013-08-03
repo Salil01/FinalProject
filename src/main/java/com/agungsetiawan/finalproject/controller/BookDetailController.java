@@ -1,6 +1,7 @@
 package com.agungsetiawan.finalproject.controller;
 
 import com.agungsetiawan.finalproject.domain.Book;
+import com.agungsetiawan.finalproject.exception.NotFoundException;
 import com.agungsetiawan.finalproject.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,11 @@ public class BookDetailController {
     @RequestMapping(value = "/public/book/detail/{bookId}",method = RequestMethod.GET)
     public String bookDetail(@PathVariable("bookId") Long bookId, Model model){
         Book book=bookService.findOne(bookId);
+        
+        if(book==null){
+            throw new NotFoundException("Book Not Found");
+        }
+        
         model.addAttribute("page", "detail.jsp");
         model.addAttribute("book", book);
         return "template";

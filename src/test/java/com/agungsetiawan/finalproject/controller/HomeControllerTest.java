@@ -6,18 +6,22 @@ import com.agungsetiawan.finalproject.util.BookBuilder;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import org.junit.Before;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.servlet.View;
-import static org.hamcrest.Matchers.*;
+import org.junit.Test;
 import org.mockito.Mockito;
+import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -26,26 +30,26 @@ import org.springframework.web.servlet.view.JstlView;
  *
  * @author awanlabs
  */
-public class AllBookControllerTest {
+public class HomeControllerTest {
     
-    AllBookController allBookController;
     BookService bookService;
+    HomeController homeController;
     View view;
     MockMvc mockMvc;
-
+    
     @Before
     public void setUp() {
-        bookService = Mockito.mock(BookService.class);
-        allBookController=new AllBookController(bookService);
-        view= Mockito.mock(View.class);
-        mockMvc= MockMvcBuilders.standaloneSetup(allBookController).setSingleView(view)
-                 .setViewResolvers(viewResolver()).build();
+        bookService= Mockito.mock(BookService.class);
+        homeController=new HomeController(bookService);
+        view=Mockito.mock(View.class);
+        mockMvc= MockMvcBuilders.standaloneSetup(homeController)
+                 .setSingleView(view).setViewResolvers(viewResolver()).build();
     }
     
     @Test
-    public void allBookTest() throws Exception{
+    public void indexTest() throws Exception{
         
-        Book bookOne=new BookBuilder().id(1L).author("Agung Setiawan").title("Java in Nutshell")
+         Book bookOne=new BookBuilder().id(1L).author("Agung Setiawan").title("Java in Nutshell")
                          .price(new BigDecimal(85000)).description("Java book for intermediate")
                          .image("java-in-nutshell").build();
         Book bookTwo=new BookBuilder().id(2L).author("Markosvey").title("PHP in Nutshell")
@@ -56,13 +60,14 @@ public class AllBookControllerTest {
         books.add(bookOne);
         books.add(bookTwo);
         
-        Mockito.when(bookService.findRandom()).thenReturn(books);
+        Mockito.when(bookService.findAll()).thenReturn(books);
         
-        mockMvc.perform(get("/public/book/all"))
+        mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("templateno"))
-                .andExpect(forwardedUrl("/WEB-INF/jsp/templateno.jsp"))
+                .andExpect(view().name("template"))
+                .andExpect(forwardedUrl("/WEB-INF/jsp/template.jsp"))
                 .andExpect(model().attribute("page", "grid.jsp"))
+                .andExpect(model().attribute("h2title", "New Book"))
                 .andExpect(model().attribute("books", books))
                 .andExpect(model().attribute("books",hasSize(2)))
                 .andExpect(model().attribute("books", hasItem(
@@ -86,7 +91,7 @@ public class AllBookControllerTest {
                     )
                     )));
         
-        Mockito.verify(bookService,Mockito.times(1)).findRandom();
+        Mockito.verify(bookService,Mockito.times(1)).findAll();
         Mockito.verifyNoMoreInteractions(bookService);
     }
     

@@ -5,7 +5,6 @@ import com.agungsetiawan.finalproject.domain.OrderDetail;
 import com.agungsetiawan.finalproject.service.OrderService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
