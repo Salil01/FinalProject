@@ -42,5 +42,10 @@ public class OrderServiceImpl implements OrderService{
     public List<Order> findAll() {
         return orderDao.findAll();
     }
+
+    @Override
+    public Order edit(Order order) {
+        return orderDao.edit(order);
+    }
     
 }

@@ -12,8 +12,8 @@
             <div id="menu">
             	<ul>
                         <li><a href="<c:url value="/admin" />">beranda</a></li>
-            		<li><a href="">Buku</a></li>
-            		<li><a href="<c:url value="/public/book/all" />">Kategori</a></li>
+            		<li><a href="<c:url value="/admin/book" />">Buku</a></li>
+            		<li><a href="<c:url value="/admin/category" />">Kategori</a></li>
             		<li><a href="">Order</a></li>
             	</ul>
             </div> <!-- batas akhir menu -->

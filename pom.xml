@@ -18,7 +18,7 @@
 		<sonar.jacoco.reportPath>${coverage.reports.dir}/jacoco-unit.exec</sonar.jacoco.reportPath>
 		<sonar.jacoco.itReportPath>${coverage.reports.dir}/jacoco-it.exec</sonar.jacoco.itReportPath>
 		<sonar.jacoco.jar>${basedir}/lib/jacocoagent.jar</sonar.jacoco.jar>
-        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
 
     <dependencies>
@@ -132,7 +132,6 @@
             <version>2.3.1</version>
         </dependency>
         
-        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -205,6 +204,7 @@
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
         </dependency>
+            
             
 <!--        <dependency>
             <groupId>org.apache.tiles</groupId>

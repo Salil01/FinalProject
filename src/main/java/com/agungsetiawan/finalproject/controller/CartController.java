@@ -50,7 +50,7 @@ public class CartController {
     }
     
     @RequestMapping(value = "public/cart/remove/{bookId}",method = RequestMethod.GET)
-    public String removeBook(@PathVariable("bookId") Long bookId ,Model model){
+    public String removeBook(@PathVariable("bookId") Long bookId ,Model model) throws NotFoundException{
         Book book=bookService.findOne(bookId);
         
         if(book==null){

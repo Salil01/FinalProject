@@ -9,7 +9,8 @@
     </head>
     <body>
         <h2>Category : ${book.category.name}</h2>
-        <img src="<c:url value="/img/${book.image}_big.jpg"/>" class="gede"/>
+        <!--<img src="<c:url value="/img/${book.image}_big.jpg"/>" class="gede"/>-->
+        <img height="320" src="<c:url value="/img/${book.image}.jpg"/>" class="gede"/>
         <div id="title-desc">
             <div id="title">
                 <p class="title">${book.title}</p>

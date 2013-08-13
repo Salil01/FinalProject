@@ -111,7 +111,8 @@
                             <c:forEach var="book" items="${randomBooks}">
                                 <div class="random">
                                     <div class="image">
-                                        <img src="<c:url value='/img/${book.image}_small.jpg'/>"/>
+                                        <!--<img src="<c:url value='/img/${book.image}_small.jpg'/>"/>-->
+                                        <img height="41" width="34" src="<c:url value='/img/${book.image}.jpg'/>"/>
                                     </div>
                                     <div class="title">
                                         <p>${book.title}</p>

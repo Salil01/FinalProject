@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -20,10 +22,15 @@ public class Book implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "OJO KOSONG")
     private String title;
+    @NotEmpty(message = "OJO KOSONG")
     private String author;
+    @NotEmpty(message = "OJO KOSONG")
     private String description;
+    @NotNull(message = "OJO KOSONG")
     private BigDecimal price;
+    @NotEmpty(message = "OJO KOSONG")
     private String image;
     
     @ManyToOne

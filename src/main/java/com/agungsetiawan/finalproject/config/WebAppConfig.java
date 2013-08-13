@@ -1,10 +1,13 @@
 package com.agungsetiawan.finalproject.config;
 
+import com.agungsetiawan.finalproject.exception.NotFoundException;
 import com.agungsetiawan.finalproject.interceptor.CommonDataInterceptor;
 import com.agungsetiawan.finalproject.service.CartService;
+import java.io.IOException;
 import java.util.Properties;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +22,7 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.context.request.WebRequestInterceptor;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -110,24 +114,26 @@ public class WebAppConfig extends WebMvcConfigurerAdapter{
         return new CommonDataInterceptor();
     }
     
-    @Bean
-    public SimpleMappingExceptionResolver exceptionResolver() {
+    @Bean(name = "exceptionResolver")
+    public SimpleMappingExceptionResolver getSimpleMappingExceptionResolver() {
         SimpleMappingExceptionResolver exceptionResolver = new SimpleMappingExceptionResolver();
 
         Properties exceptionMappings = new Properties();
 
-        exceptionMappings.put("com.agungsetiawan.finalproject.exception.NotFoundException", "404");
-        exceptionMappings.put("java.lang.Exception", "404");
-        exceptionMappings.put("java.lang.RuntimeException", "404");
+        exceptionMappings.put(NotFoundException.class.getName(), "404s");
+        exceptionMappings.put(ConstraintViolationException.class.getName(), "409");
+//        exceptionMappings.put("java.lang.Exception", "404");
+//        exceptionMappings.put("java.lang.RuntimeException", "404");
 
         exceptionResolver.setExceptionMappings(exceptionMappings);
-
-        Properties statusCodes = new Properties();
-
-        statusCodes.put("404", "404");
-        statusCodes.put("error/error", "500");
-
-        exceptionResolver.setStatusCodes(statusCodes);
+//        exceptionResolver.setDefaultErrorView("404s");
+        exceptionResolver.setOrder(0);
+//        Properties statusCodes = new Properties();
+//
+//        statusCodes.put("404", "404");
+//        statusCodes.put("error/error", "500");
+//
+//        exceptionResolver.setStatusCodes(statusCodes);
 
         return exceptionResolver;
     }

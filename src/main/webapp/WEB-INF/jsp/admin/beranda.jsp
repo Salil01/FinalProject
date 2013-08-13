@@ -17,6 +17,7 @@
                 Beranda
             </div>
             <div id="content-reg">
+                
                 Selamat datang di halaman administrator
             </div>
         </div>

@@ -38,7 +38,7 @@
                       <input type="hidden" name="bookId" value="${b.key.id}"/>
                       <tr>
                           <td>${b.key.title}</td>
-                          <td><img src="<c:url value="/img/${b.key.image}_small.jpg" />" /></td>
+                          <td><img height="41" width="34" src="<c:url value="/img/${b.key.image}.jpg" />" /></td>
                           <td><input class="quantity" type="text" name="quantity" value="${b.value}" /></td>
                           <td><input type="submit" value="Update" /></td>
                           <td><a href="<c:url value="/public/cart/remove/${b.key.id}" />"><img src="<c:url value="/img/delete.png" />"/></a></td>

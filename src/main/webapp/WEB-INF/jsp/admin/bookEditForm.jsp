@@ -1,6 +1,6 @@
 <%-- 
-    Document   : bookForm
-    Created on : Aug 3, 2013, 4:16:19 PM
+    Document   : bookEditForm
+    Created on : Aug 5, 2013, 11:54:50 AM
     Author     : awanlabs
 --%>
 
@@ -16,12 +16,12 @@
     <body>
         <div id="registration">
             <div id="header-reg">
-                Tambah Buku
+                Ubah Buku
             </div>
             <div id="content-reg">
                 <hr>
                 <div id="form">
-                    <c:url value="/admin/book/add" var="url"/>
+                    <c:url value="/admin/book/edit" var="url"/>
                     <form:form method="post" modelAttribute="book" enctype="multipart/form-data" action="${url}">
                         <c:if test="${showError eq 1}">
                             <div id="errors">
@@ -34,31 +34,44 @@
                                <p><span class="error">${error}</span></p>
                             </div>
                         </c:if>
+                        <form:hidden path="id" value="${book.id}"/>
                         <table>
                             <tr>
                                 <td>Judul</td>
-                                <td><form:input path="title"/></td>
+                                <td><form:input path="title" value="${book.title}" /></td>
                             </tr>
                             <tr>
                                 <td>Penulis</td>
-                                <td><form:input path="author"/></td>
+                                <td><form:input path="author" value="${book.author}" /></td>
                             </tr>
                             <tr>
                                 <td style="vertical-align: top">Deskripsi</td>
-                                <td><form:textarea path="description" cols="35" rows="15"/></td>
+                                <td><form:textarea path="description" cols="35" rows="15" value="${book.description}" /></td>
                             </tr>
                             <tr>
                                 <td>Harga</td>
-                                <td><form:input path="price"/></td>
+                                <td><form:input path="price" value="${book.price}" /></td>
                             </tr>
                             <tr>
                                 <td>Kategori</td>
-                                <td><form:select path="category" 
-                                             cssStyle="width:300px"   items="${categories}" itemValue="id" itemLabel="name"/></td>
+                                <td><form:select path="category" cssStyle="width:300px">
+                                        <c:forEach items="${categories}" var="category">
+                                            <c:choose>
+                                                <c:when test="${book.category.id==category.id}">
+                                                  <form:option value="${category.id}" label="${category.name}" selected="true" />
+                                                </c:when>
+
+                                                <c:otherwise>
+                                                    <form:option value="${category.id}" label="${category.name}"/>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </form:select>
+                                    </td>
                             </tr>
                             <tr>
                                 <td>Gambar</td>
-                                <td><form:input path="image"/></td>
+                                <td><form:input path="image" value="${book.image}" /></td>
                             </tr>
                             <tr>
                                 <td></td>

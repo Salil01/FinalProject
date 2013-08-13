@@ -29,7 +29,7 @@ public class BookDetailController {
     }
     
     @RequestMapping(value = "/public/book/detail/{bookId}",method = RequestMethod.GET)
-    public String bookDetail(@PathVariable("bookId") Long bookId, Model model){
+    public String bookDetail(@PathVariable("bookId") Long bookId, Model model) throws NotFoundException{
         Book book=bookService.findOne(bookId);
         
         if(book==null){

@@ -49,6 +49,12 @@ public class OrderDaoHibernateImpl implements OrderDao{
         return sessionFactory.getCurrentSession().createQuery("select o from Order o").list();
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Order edit(Order order) {
+        sessionFactory.getCurrentSession().merge(order);
+        return order;
+    }
     
     
 }

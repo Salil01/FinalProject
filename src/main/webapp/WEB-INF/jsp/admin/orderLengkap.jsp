@@ -1,5 +1,12 @@
+<%-- 
+    Document   : orderLengkap
+    Created on : Aug 6, 2013, 11:06:16 AM
+    Author     : awanlabs
+--%>
+
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,39 +44,43 @@
                               <th>Judul</th>
                               <th>Gambar</th>
                               <th style="width: 15%">Jumlah</th>
-                              <th>Update</th>
-                              <th>Hapus</th>
                               <th>Harga</th>
                               <th>Subtotal</th>
                           </tr>
                       </thead>
                       <tbody>
-                          <c:forEach items="${books}" var="b">
-                          <form method="post" action="<c:url value="/public/cart/update" />">
-                          <input type="hidden" name="bookId" value="${b.key.id}"/>
+                          <c:forEach items="${details}" var="detail">
                           <tr>
-                              <td>${b.key.title}</td>
-                              <td><img height="41" width="34" src="<c:url value="/img/${b.key.image}.jpg" />" /></td>
-                              <td><input class="quantity" type="text" name="quantity" value="${b.value}" /></td>
-                              <td><input type="submit" value="Update" /></td>
-                              <td><a href="<c:url value="/public/cart/remove/${b.key.id}" />"><img src="<c:url value="/img/delete.png" />"/></a></td>
-                              <td>${b.key.price}</td>
-                              <td>${b.key.price*b.value}</td>
+                              <td>${detail.book.title}</td>
+                              <td><img height="41" width="34" src="<c:url value="/img/${detail.book.image}.jpg" />" /></td>
+                              <td>${detail.amount}</td>
+                              <td>${detail.price}</td>
+                              <td>${detail.subTotal}</td>
                           </tr>
-                          </form>
                           </c:forEach>
                       </tbody>
                     </table>  
 
                     <div id="total">
-                        Total : <c:out value="${total}"/>
+                        Total : <c:out value="${order.total}"/>
                     </div>
-                </div>
                     
-                <div id="finalize-order" >
-                    <a href="<c:url value="/secured/checkout/finalize"/>">Finalize Order</a>
+                    <c:if test="${showError eq 1}">
+                            <div id="errors">
+                               <p><form:errors path="status" class="error"/></p>
+                            </div>
+                        </c:if>
+                    
+                    <div id="status">
+                        <c:url value="/admin/order/edit" var="url"/>
+                        <form method="post" action="${url}">
+                            <input type="hidden" name="id" value="${order.id}"/>
+                            Status : <input type="text" name="status" value="${order.status}"/>
+                            <input type="submit" value="Update"/>
+                        </form>
+                    </div>
+                    
                 </div>
-                
             </div>
         </div>
     </body>

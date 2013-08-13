@@ -13,5 +13,6 @@
     </head>
     <body>
         <h3>404 Not Found</h3>
+        ${exception.message}
     </body>
 </html>

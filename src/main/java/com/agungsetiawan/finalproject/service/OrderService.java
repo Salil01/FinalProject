@@ -13,4 +13,5 @@ public interface OrderService {
     public Order findOne(Long id);
     public List<Order> findByCustomer(String username);
     public List<Order> findAll();
+    public Order edit(Order order);
 }

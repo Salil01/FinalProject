@@ -13,7 +13,7 @@
         <c:forEach var="book" items="${books}"> 
             <div class="bookBox">
                 <p class="title"><a href="<c:url value="/public/book/detail/${book.id}" />">${book.title}</></p>
-                <img class="thumbnail" src="<c:url value="/img/${book.image}.jpg"/>"/></a>
+                <img width="129" class="thumbnail" src="<c:url value="/img/${book.image}.jpg"/>"/></a>
                 <p class="price">Our Price : Rp. ${book.price}</p>
                 <img src="<c:url value="/img/buy-button.png"/>"/>
             </div>
