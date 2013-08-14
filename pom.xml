@@ -141,7 +141,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test-mvc</artifactId>
-            <version>1.0.0.M1</version>
+            <version>1.0.0.M2</version>
             <scope>test</scope>
         </dependency>
         
@@ -220,11 +220,18 @@
         
     </dependencies>
     
-    <repositories>
+<!--    <repositories>
         <repository>
             <id>spring-maven-milestone</id>
             <name>Spring Maven Milestone Repository</name>
             <url>http://maven.springframework.org/milestone</url>
+        </repository>
+    </repositories>-->
+    <repositories>
+        <repository>
+            <id>spring-milestone</id>
+            <name>Spring Portfolio Milestone Repository</name>
+            <url>http://repo.springsource.org/milestone/</url>
         </repository>
     </repositories>
     
