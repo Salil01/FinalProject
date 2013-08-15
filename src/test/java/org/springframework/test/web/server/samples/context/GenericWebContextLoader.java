@@ -1,5 +1,3 @@
-package com.agungsetiawan.finalproject.config;
-
 /*
 * Copyright 2011-2012 the original author or authors.
 *
@@ -15,6 +13,7 @@ package com.agungsetiawan.finalproject.config;
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+package org.springframework.test.web.server.samples.context;
 
 import javax.servlet.RequestDispatcher;
 
@@ -52,14 +51,12 @@ public class GenericWebContextLoader extends AbstractContextLoader {
     private MockServletContext initServletContext(String warRootDir, ResourceLoader resourceLoader) {
         return new MockServletContext(warRootDir, resourceLoader) {
             // Required for DefaultServletHttpRequestHandler...
-            @Override
             public RequestDispatcher getNamedDispatcher(String path) {
                 return (path.equals("default")) ? new MockRequestDispatcher(path) : super.getNamedDispatcher(path);
             }
         };
     }
 
-    @Override
     public ApplicationContext loadContext(MergedContextConfiguration mergedConfig) throws Exception {
         GenericWebApplicationContext context = new GenericWebApplicationContext();
         context.getEnvironment().setActiveProfiles(mergedConfig.getActiveProfiles());
@@ -68,7 +65,6 @@ public class GenericWebContextLoader extends AbstractContextLoader {
         return context;
     }
 
-    @Override
     public ApplicationContext loadContext(String... locations) throws Exception {
 // should never be called
         throw new UnsupportedOperationException();
@@ -96,4 +92,6 @@ public class GenericWebContextLoader extends AbstractContextLoader {
         return "-context.xml";
     }
 }
+
+
 

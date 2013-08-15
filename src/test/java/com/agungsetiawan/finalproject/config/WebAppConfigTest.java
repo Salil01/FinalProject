@@ -22,11 +22,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 
 @Configuration
-//@EnableWebMvc
+@EnableWebMvc
 @ComponentScan("com.agungsetiawan.finalproject")
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
-@ImportResource("classpath:spring-security.xml")
+//@ImportResource("classpath:spring-security.xml")
 public class WebAppConfigTest {
     @Resource
     Environment env;
@@ -66,11 +66,11 @@ public class WebAppConfigTest {
         return  hibernateTransactionManager;
     }
     
-//    @Bean
-//    public InternalResourceViewResolver viewResolver(){
-//        InternalResourceViewResolver resolver=new InternalResourceViewResolver();
-//        resolver.setPrefix("/WEB-INF/jsp/");
-//        resolver.setSuffix(".jsp");
-//        return resolver;
-//    }
+    @Bean
+    public InternalResourceViewResolver viewResolver(){
+        InternalResourceViewResolver resolver=new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/jsp/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
 }
